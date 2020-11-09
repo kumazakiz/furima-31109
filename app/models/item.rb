@@ -31,5 +31,6 @@ class Item < ApplicationRecord
 
     validates_inclusion_of :selling_price, in:300..9999999, message: '300~9,999,999の間で設定してください。'
     SELLING_PRICE_REGEX = /\A[0-9]+\z/.freeze
-    validates_format_of :selling_price, SELLING_PRICE_REGEX,message: 'には半角数字のみで設定してください'
+    validates_format_of :selling_price, with: SELLING_PRICE_REGEX, message: 'には半角数字のみで設定してください'
 end
+ 
