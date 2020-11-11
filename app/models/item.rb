@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   belongs_to :user
   has_one_attached :image
 
@@ -9,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_cost
   belongs_to :shipping_area
   belongs_to :days_to_ship
-  
+
   with_options presence: true do
     validates :image
     validates :title
@@ -29,8 +28,7 @@ class Item < ApplicationRecord
     validates :days_to_ship_id
   end
 
-    validates_inclusion_of :selling_price, in:300..9999999, message: '300~9,999,999の間で設定してください。'
-    SELLING_PRICE_REGEX = /\A[0-9]+\z/.freeze
-    validates_format_of :selling_price, with: SELLING_PRICE_REGEX, message: 'には半角数字のみで設定してください'
+  validates_inclusion_of :selling_price, in: 300..9_999_999, message: '300~9,999,999の間で設定してください。'
+  SELLING_PRICE_REGEX = /\A[0-9]+\z/.freeze
+  validates_format_of :selling_price, with: SELLING_PRICE_REGEX, message: 'には半角数字のみで設定してください'
 end
- 
