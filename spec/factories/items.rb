@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :item do
     title            { 'test' }
     explanation      { 'test' }
-    selling_price    { 10000 }
+    selling_price    { 10_000 }
     association :user
 
     after(:build) do |item|
