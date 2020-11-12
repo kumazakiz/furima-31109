@@ -127,8 +127,6 @@
       <% @items.each do |item| %>
       <li class='list'>
         <%= link_to (item_path(item.id)) do %>
-        <%# 方針：ブロック変数を使って引数として渡す　　書き方：ブロック変数の中身のid  例：ツイートのid %>
-        <%# 方針：link_toの記述をおさらい %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
           <%# 商品が売れていればsold outを表示しましょう %>
@@ -153,7 +151,6 @@
         </div>
       </li>
       <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <% if @items == nil %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -173,7 +170,6 @@
         <% end %>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
       <%# /商品がない場合のダミー %>
     </ul>
   </div>
