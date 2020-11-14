@@ -9,7 +9,7 @@ class BuyersController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @user_buyer = UserBuyer.new(buyer_params)
     if @user_buyer.valid?
       @user_buyer.save
