@@ -1,21 +1,21 @@
 class BuyersController < ApplicationController
 
-  def index
-  end
 
-  def new
+  def index
     @item = Item.find(params[:item_id])
     @user_buyer = UserBuyer.new
   end
 
+
   def create
-    binding.pry
+    #binding.pry
+    @item = Item.find(params[:item_id])
     @user_buyer = UserBuyer.new(buyer_params)
     if @user_buyer.valid?
       @user_buyer.save
-      redirect_to action: :index
+      redirect_to root_path
     else
-      render action: :new
+      render 'index'
     end
   end
 
