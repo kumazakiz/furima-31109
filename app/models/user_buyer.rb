@@ -15,7 +15,7 @@ class UserBuyer
   end
 
   validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-  validates :phone_number, format: {with: /\A\d{11}\z/, message: "no hyphens needed", "must be within 11 digits"}
+  validates :phone_number, format: {with: /\A\d{11}\z/, message: "please write within 11 digits without hyphens"}
 
   def save
     buyer = Buyer.create(user_id: user_id, item_id: item_id)
