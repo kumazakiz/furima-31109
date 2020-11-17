@@ -8,6 +8,7 @@ class UserBuyer
     validates :municipality
     validates :address
     validates :phone_number
+    validates :token
   end
 
   with_options numericality: { other_than: 1 } do
