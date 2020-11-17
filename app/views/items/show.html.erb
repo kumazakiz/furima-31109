@@ -6,14 +6,14 @@
     <h2 class="name">
       <%= @item.title %>
     </h2>
-    <% if @item.buyer != nil %>
     <div class='item-img-content'>
       <%= image_tag @item.image ,class:"item-box-img" %>
+      <% if @item.buyer != nil %>
       <div class='sold-out'>
         <span>Sold Out!!</span>
+      <% end %>
       </div>
     </div>
-    <% end %>
     <div class="item-price-box">
       <span class="item-price">
         <%= "¥ #{@item.selling_price}" %>
