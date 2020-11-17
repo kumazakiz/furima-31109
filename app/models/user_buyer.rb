@@ -1,6 +1,6 @@
 class UserBuyer
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :user_id, :item_id, :postal_code, :prefectures_id, :municipality, :address, :building_name, :phone_number, :token
 
   with_options presence: true do
     validates :postal_code
