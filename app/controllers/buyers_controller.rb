@@ -6,11 +6,10 @@ class BuyersController < ApplicationController
     @user_buyer = UserBuyer.new
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
-    elsif @item.buyer != nil
+    elsif !@item.buyer.nil?
       redirect_to root_path
     end
   end
-
 
   def create
     @item = Item.find(params[:item_id])
@@ -31,14 +30,11 @@ class BuyersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.selling_price,
       card: buyer_params[:token],
       currency: 'jpy'
     )
   end
-
 end
-
-
