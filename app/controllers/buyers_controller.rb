@@ -1,8 +1,7 @@
 class BuyersController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_buyer, only: [:index, :create]
   def index
-    @item = Item.find(params[:item_id])
     @user_buyer = UserBuyer.new
     if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
@@ -12,7 +11,6 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @user_buyer = UserBuyer.new(buyer_params)
     if @user_buyer.valid?
       pay_item
@@ -36,5 +34,9 @@ class BuyersController < ApplicationController
       card: buyer_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_buyer
+    @item = Item.find(params[:item_id])
   end
 end
