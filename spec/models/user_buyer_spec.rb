@@ -1,10 +1,10 @@
 require 'rails_helper'
 RSpec.describe UserBuyer, type: :model do
   before do
-    #@user = FactoryBot.build(:user)
-    #@buyer = FactoryBot.build(:buyer)
-    #@item = FactoryBot.build(:item) 引数の記述変更あり
-    @user_buyer = FactoryBot.build(:user_buyer)
+    @buyer = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    sleep 1
+    @user_buyer = FactoryBot.build(:user_buyer, user_id: @buyer.id, item_id: @item.id)
   end
 
   describe '商品購入機能' do
@@ -65,6 +65,11 @@ RSpec.describe UserBuyer, type: :model do
         @user_buyer.phone_number = '123456789101'
         @user_buyer.valid?
         expect(@user_buyer.errors.full_messages).to include("Phone number please write within 11 digits without hyphens")
+      end
+      it "tokenが空では登録できない" do
+        @user_buyer.token = nil
+        @user_buyer.valid?
+        expect(@user_buyer.errors.full_messages).to include("Token can't be blank")
       end
     end
   end
