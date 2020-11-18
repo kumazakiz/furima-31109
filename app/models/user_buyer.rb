@@ -9,12 +9,11 @@ class UserBuyer
     validates :address
     validates :phone_number
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
-  with_options numericality: { other_than: 1 } do
-    validates :prefectures_id
-  end
-
+  validates :prefectures_id, numericality: { other_than: 1 }
   validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
   validates :phone_number, format: { with: /\A\d{11}\z/, message: 'please write within 11 digits without hyphens' }
 
